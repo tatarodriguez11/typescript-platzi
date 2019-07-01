@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../services/team.service';
+import { TeamService, TeamTableHeaders } from '../services/team.service';
 import { Observable } from 'rxjs';
 import { Team } from '../interfaces/team';
 import { take } from 'rxjs/operators';
@@ -15,6 +15,7 @@ export class TeamTableComponent implements OnInit {
 
   // el signo $ indica que la variable es asincronica
   public teams$: Observable<Team[]>;
+  public tableHeaders = TeamTableHeaders;
 
   constructor(private teamService: TeamService) { }
 
@@ -28,6 +29,7 @@ export class TeamTableComponent implements OnInit {
           players: null,
 
         };
+        this.teamService.addTeam(team);
       }
     });
   }

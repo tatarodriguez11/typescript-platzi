@@ -24,7 +24,7 @@ export class TeamTableComponent implements OnInit {
     this.teamService.getTeams().pipe(take(1)).subscribe(teams => {
       if (teams.length === 0) {
         const team: Team = {
-          name: 'My amazing team',
+          name: 'MyAmazingTeam',
           country: Countries.Colombia,
           players: null,
 

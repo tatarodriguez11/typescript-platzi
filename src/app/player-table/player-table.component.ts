@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Player } from '../interfaces/player';
+import { PlayerService, PlayerTableHeaders } from '../services/player.service';
 
 @Component({
   selector: 'app-player-table',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerTableComponent implements OnInit {
 
-  constructor() { }
+  public players$: Observable<Player[]>;
+  public selectedPlayer: Player;
+  public playerTableHeaders = PlayerTableHeaders;
+
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
+
+    this.players$ = this.playerService.getPlayers();
   }
+
+
 
 }

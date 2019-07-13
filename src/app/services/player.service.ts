@@ -34,11 +34,13 @@ export class PlayerService {
     this.db.list('/players').remove(id);
   }
 
-  editPlayer(newPlayerData) {
-
+  editPlayer(newPlayerData: Player) {
+    console.log(newPlayerData);
     const $key = newPlayerData.$key;
+    console.log($key);
     delete(newPlayerData.$key);
-    this.db.list('/players').update($key, newPlayerData);
+    console.log(newPlayerData, 'hhu');
+    this.db.list('/players').set($key, newPlayerData);
 
   }
 }
